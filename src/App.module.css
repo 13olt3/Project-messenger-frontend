@@ -1,6 +1,6 @@
 .app {
   display: grid;
-  grid-template-rows: 6fr 1fr;
+  grid-template-rows: 1fr 6fr 1fr;
   min-height: 100vh;
 }
 .spacer {
