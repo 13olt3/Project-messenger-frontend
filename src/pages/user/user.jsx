@@ -15,7 +15,7 @@ function User() {
       setLoading(false);
     }
     getUsersData();
-  }, []);
+  }, [username]);
 
   if (loading) return <div id="center">Loading page...</div>;
   return (

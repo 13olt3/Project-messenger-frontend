@@ -1,6 +1,7 @@
 import styles from "./Messages.module.css";
 import { getMessages } from "../../services/messagesService.js";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 function Messages() {
   const [messages, setMessages] = useState([]);
@@ -21,9 +22,11 @@ function Messages() {
   if (loading) return <div id="center">Loading posts...</div>;
 
   return (
-    <div>
+    <div className={styles.contacts}>
       {messages.map((eachMessage) => (
-        <div key={eachMessage.id}>{eachMessage.body}</div>
+        <Link key={eachMessage.id} to={`/conversation/${eachMessage.username}`}>
+          {eachMessage.username}
+        </Link>
       ))}
     </div>
   );

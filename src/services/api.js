@@ -17,26 +17,7 @@ api.interceptors.request.use(
     return Promise.reject(error);
   },
 );
-// axios.interceptors.response.use(
-//   (response) => response, // If the request succeeds, just return the response
-//   (error) => {
-//     // Check if the error is a 401 (Expired/Invalid Token)
-//     console.log("1. Interceptor caught an error");
-//     if (error.response && error.response.status === 401) {
-//       console.error("Token expired or unauthorized. Logging out...");
 
-//       // 1. Clear the storage
-//       localStorage.removeItem("jwtToken");
-//       localStorage.removeItem("username");
-
-//       // 2. Redirect to login
-//       // Note: Since we are outside a React component, we use window.location
-//       window.location.href = "/login";
-//     }
-
-//     return Promise.reject(error);
-//   },
-// );
 api.interceptors.response.use(
   (response) => response,
   (error) => {

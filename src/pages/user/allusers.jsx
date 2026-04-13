@@ -19,7 +19,7 @@ function Allusers() {
   return (
     <div>
       {users.map((eachUser) => {
-        return <div>{eachUser.username}</div>;
+        return <div key={eachUser.id}>{eachUser.username}</div>;
       })}
     </div>
   );

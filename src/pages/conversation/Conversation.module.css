@@ -1,0 +1,27 @@
+.chatPanel {
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  grid-template-columns: 1fr;
+}
+.conversationPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow: auto;
+  max-height: 80%;
+  align-self: flex-end;
+}
+
+.userMsg {
+  align-self: flex-end;
+}
+
+.receieverMsg {
+  align-self: flex-start;
+}
+.userMsg,
+.receieverMsg {
+  padding: 1em;
+  background-color: azure;
+  border-radius: 10px;
+}

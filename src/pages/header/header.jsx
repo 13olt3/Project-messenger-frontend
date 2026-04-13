@@ -5,20 +5,16 @@ import styles from "./Header.module.css";
 
 function Header({ user, handleLogout }) {
   const links = [
-    { name: "Signup Page", link: "/signup" },
-    { name: "Login Page", link: "/login" },
-
+    { name: "Signup", link: "/signup" },
+    { name: "Login", link: "/login" },
+  ];
+  const restrictedLinks = [
+    { name: "Messages", link: "/messages" },
     { name: "All users", link: "/allusers" },
   ];
-  const restrictedLinks = [{ name: "Messages", link: "/messages" }];
 
   return (
     <div className={styles.header}>
-      {links.map((link) => (
-        <Link key={link.name} to={link.link}>
-          {link.name}
-        </Link>
-      ))}
       {user
         ? restrictedLinks.map((link) => (
             <Link key={link.name} to={link.link}>
@@ -31,7 +27,13 @@ function Header({ user, handleLogout }) {
           Logout
         </button>
       ) : (
-        <Link to={"/login"}>Login</Link>
+        links.map((link) => {
+          return (
+            <Link key={link.name} to={link.link}>
+              {link.name}
+            </Link>
+          );
+        })
       )}
     </div>
   );

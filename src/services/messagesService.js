@@ -11,4 +11,28 @@ export const getMessages = async () => {
   }
 };
 
+export const getConversation = async (username) => {
+  try {
+    const response = await api.get(`/messages/${username}`);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching posts:", error);
+    throw error;
+  }
+};
+
+export const sendMessage = async (userId, commentData) => {
+  try {
+    const response = await api.post(`/messages/${userId}`, {
+      body: commentData,
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log("Error sending message:", error);
+    throw error;
+  }
+};
+
 const API_URL_GET_MESSAGES = import.meta.env.VITE_API_URL_GET_MESSAGES;

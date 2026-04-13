@@ -8,6 +8,7 @@ import ProtectedRoute from "./protectedRoutes";
 import Messages from "../pages/messages/messages";
 import Allusers from "../pages/user/allusers";
 import User from "../pages/user/user";
+import Conversation from "../pages/conversation/conversation";
 
 const routes = [
   {
@@ -36,7 +37,7 @@ const routes = [
           { path: "/messages", element: <Messages /> },
           { path: "/allusers", element: <Allusers /> },
           { path: "/user/:username", element: <User /> },
-          // { path: "profile", element: <Profile /> },
+          { path: "conversation/:username", element: <Conversation /> },
           // { path: "send-message", element: <SendMessage /> },
         ],
       },
