@@ -9,6 +9,7 @@ import Messages from "../pages/messages/messages";
 import Allusers from "../pages/user/allusers";
 import User from "../pages/user/user";
 import Conversation from "../pages/conversation/conversation";
+import Upload from "../pages/upload/upload";
 
 const routes = [
   {
@@ -37,7 +38,9 @@ const routes = [
           { path: "/messages", element: <Messages /> },
           { path: "/allusers", element: <Allusers /> },
           { path: "/user/:username", element: <User /> },
-          { path: "conversation/:username", element: <Conversation /> },
+          { path: "/conversation/:username", element: <Conversation /> },
+          { path: "/user/upload", element: <Upload /> },
+
           // { path: "send-message", element: <SendMessage /> },
         ],
       },

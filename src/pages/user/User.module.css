@@ -1,7 +1,7 @@
 .profileSummary {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 4fr;
 }
 .username {
   grid-column: 2/3;
@@ -14,6 +14,7 @@
 
 .picCanvas {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   grid-column: 1 / 2;
@@ -22,4 +23,11 @@
 .profilePic {
   width: 175px;
   padding: 1em;
+}
+
+.userContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2em;
 }

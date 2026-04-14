@@ -13,19 +13,15 @@ function Conversation() {
   const [conversationData, setConversationData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [commentData, setCommentData] = useState("");
-  const [receiverId, setReceiverId] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getConversationData(username) {
       const data = await getConversation(username);
       setConversationData(data);
+      console.log(data);
 
-      if (localStorage.getItem("username") === data[0].sender.username) {
-        setReceiverId(data[0].receiverId);
-      } else {
-        setReceiverId(data[0].senderId);
-      }
       setLoading(false);
     }
     getConversationData(username);
@@ -51,13 +47,13 @@ function Conversation() {
   }
   async function handleSendComment(e) {
     e.preventDefault();
-    console.log(receiverId);
+    console.log(username);
     console.log(commentData);
-    await sendMessage(receiverId, commentData.body);
+    await sendMessage(username, commentData.body);
     navigate(0);
   }
 
-  if (loading) return <div id="center">Loading posts...</div>;
+  if (loading) return <div id="center">Loading conversation...</div>;
 
   return (
     <div className={styles.chatPanel}>

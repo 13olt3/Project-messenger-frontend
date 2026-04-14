@@ -22,9 +22,9 @@ export const getConversation = async (username) => {
   }
 };
 
-export const sendMessage = async (userId, commentData) => {
+export const sendMessage = async (username, commentData) => {
   try {
-    const response = await api.post(`/messages/${userId}`, {
+    const response = await api.post(`/messages/${username}`, {
       body: commentData,
     });
     console.log(response.data);

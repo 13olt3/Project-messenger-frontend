@@ -2,7 +2,8 @@ import styles from "./User.module.css";
 import defaultUser from "../../assets/defaultUser.jpg";
 import { getUser } from "../../services/userService.js";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
+import EditBio from "../../components/editBio/editBio";
 
 function User() {
   const [user, setUser] = useState(null);
@@ -11,6 +12,7 @@ function User() {
   useEffect(() => {
     async function getUsersData() {
       const data = await getUser(username);
+
       setUser(data);
       setLoading(false);
     }
@@ -22,15 +24,27 @@ function User() {
     <div>
       <div className={styles.profileSummary}>
         <h1 className={styles.username}>{user.username}</h1>
-        <div className={styles.bio}>{user.profile.bio}</div>
+        <div className={styles.bio}>
+          {user.profile.bio}
+          {username === localStorage.getItem("username") ? <EditBio /> : ""}
+        </div>
         <div className={styles.picCanvas}>
           {user.profile.profilePic === "default" ? (
             <img src={defaultUser} className={styles.profilePic}></img>
           ) : (
-            "userPic here"
+            <img
+              src={user.profile.profilePic}
+              className={styles.profilePic}
+            ></img>
+          )}
+          {username === localStorage.getItem("username") ? (
+            <Link to="/user/upload">Upload new profile picture</Link>
+          ) : (
+            ""
           )}
         </div>
       </div>
+      <Link to={`/conversation/${user.username}`}>Message user</Link>
     </div>
   );
 }

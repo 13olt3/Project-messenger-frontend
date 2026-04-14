@@ -50,3 +50,23 @@ export const getUsers = async () => {
     throw error;
   }
 };
+
+export const uploadProfilePic = async (formData) => {
+  try {
+    const response = await api.post(`/users/upload`, formData);
+    return response.data;
+  } catch (error) {
+    console.log("Error uploading file:", error);
+    throw error;
+  }
+};
+
+export const editBio = async (username, formData) => {
+  try {
+    const response = await api.put(`/users/${username}`, { bio: formData });
+    return response.data;
+  } catch (error) {
+    console.log("Error uploading bio:", error);
+    throw error;
+  }
+};

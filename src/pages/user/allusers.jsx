@@ -1,6 +1,7 @@
 import styles from "./User.module.css";
 import { getUsers } from "../../services/userService.js";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 function Allusers() {
   const [users, setUsers] = useState(null);
@@ -17,9 +18,13 @@ function Allusers() {
 
   if (loading) return <div id="center">Loading page...</div>;
   return (
-    <div>
+    <div className={styles.userContainer}>
       {users.map((eachUser) => {
-        return <div key={eachUser.id}>{eachUser.username}</div>;
+        return (
+          <Link key={eachUser.id} to={`/user/${eachUser.username}`}>
+            {eachUser.username}
+          </Link>
+        );
       })}
     </div>
   );
