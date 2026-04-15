@@ -30,7 +30,6 @@ function EditBio({ cancelEdit }) {
         onSubmit={(e) => handleEdit(e)}
         className={`${styles.form} ${showEdit ? "" : styles.hidden}`}
       >
-        <label htmlFor="editPost">Bio:</label>
         <textarea
           id="editPost"
           rows="10"

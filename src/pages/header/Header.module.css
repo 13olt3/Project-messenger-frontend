@@ -5,6 +5,7 @@
 .header {
   display: grid;
   border-bottom: solid 1px #9ca3af;
+  grid-template-columns: 1fr 1fr;
 }
 
 .linkStyle {
@@ -15,4 +16,17 @@
   cursor: pointer;
   font: inherit;
   color: rgb(208, 173, 240);
+}
+.left {
+  display: grid;
+  align-items: start;
+  justify-items: start;
+}
+.right {
+  display: grid;
+  align-items: end;
+  justify-items: end;
+}
+.profileLink {
+  padding: 0.5em;
 }

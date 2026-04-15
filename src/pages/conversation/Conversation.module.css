@@ -25,3 +25,7 @@
   background-color: azure;
   border-radius: 10px;
 }
+
+.imgPreview {
+  width: 150px;
+}

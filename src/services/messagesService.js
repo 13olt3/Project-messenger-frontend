@@ -14,7 +14,7 @@ export const getMessages = async () => {
 export const getConversation = async (username) => {
   try {
     const response = await api.get(`/messages/${username}`);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log("Error fetching posts:", error);
@@ -22,12 +22,12 @@ export const getConversation = async (username) => {
   }
 };
 
-export const sendMessage = async (username, commentData) => {
+export const sendMessage = async (username, formData) => {
   try {
-    const response = await api.post(`/messages/${username}`, {
-      body: commentData,
-    });
-    console.log(response.data);
+    console.log(formData.get("body"));
+    console.log(formData.get("imgMsg"));
+    const response = await api.post(`/messages/${username}`, formData);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log("Error sending message:", error);

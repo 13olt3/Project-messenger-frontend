@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 
 function Header({ user, handleLogout }) {
+  const currentUser = localStorage.getItem("username");
   const links = [
     { name: "Signup", link: "/signup" },
     { name: "Login", link: "/login" },
@@ -15,26 +16,38 @@ function Header({ user, handleLogout }) {
 
   return (
     <div className={styles.header}>
-      {user
-        ? restrictedLinks.map((link) => (
-            <Link key={link.name} to={link.link}>
-              {link.name}
-            </Link>
-          ))
-        : ""}
-      {user ? (
-        <button onClick={(e) => handleLogout(e)} className={styles.linkStyle}>
-          Logout
-        </button>
-      ) : (
-        links.map((link) => {
-          return (
-            <Link key={link.name} to={link.link}>
-              {link.name}
-            </Link>
-          );
-        })
-      )}
+      <div className={styles.left}>
+        {" "}
+        {user
+          ? restrictedLinks.map((link) => (
+              <Link key={link.name} to={link.link}>
+                {link.name}
+              </Link>
+            ))
+          : ""}
+        {user ? (
+          <button onClick={(e) => handleLogout(e)} className={styles.linkStyle}>
+            Logout
+          </button>
+        ) : (
+          links.map((link) => {
+            return (
+              <Link key={link.name} to={link.link}>
+                {link.name}
+              </Link>
+            );
+          })
+        )}
+      </div>
+      <div className={styles.right}>
+        <Link
+          key={"profile"}
+          to={`/user/${currentUser}`}
+          className={styles.profileLink}
+        >
+          Profile
+        </Link>
+      </div>
     </div>
   );
 }
