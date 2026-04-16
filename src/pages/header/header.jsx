@@ -27,7 +27,7 @@ function Header({ user, handleLogout }) {
       setLoading(false);
     }
     getUsersData();
-  }, []);
+  }, [currentUser]);
 
   if (loading) {
     return <div>loading...</div>;
