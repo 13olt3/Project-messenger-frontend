@@ -1,32 +1,109 @@
-.list {
-  padding: 0;
-  list-style: none;
-}
 .header {
-  display: grid;
-  border-bottom: solid 1px #9ca3af;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
 }
 
-.linkStyle {
-  background: none;
-  border: none;
-  padding: 0;
-  text-decoration: underline;
-  cursor: pointer;
-  font: inherit;
-  color: rgb(208, 173, 240);
-}
 .left {
-  display: grid;
-  align-items: start;
-  justify-items: start;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
+
+.left a,
+.left button {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+  letter-spacing: 0.1px;
+}
+
+.left a:hover,
+.left button:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  box-shadow: none;
+}
+
 .right {
-  display: grid;
-  align-items: end;
-  justify-items: end;
+  display: flex;
+  align-items: center;
 }
+
 .profileLink {
-  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.profileLink:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+/* .profileLink::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: 1.5px solid var(--accent);
+  flex-shrink: 0;
+} */
+
+.linkStyle {
+  background: transparent !important;
+  border: none;
+  color: var(--text-secondary) !important;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease !important;
+}
+
+.linkStyle:hover {
+  color: var(--error) !important;
+  background: var(--error-light) !important;
+  box-shadow: none !important;
+}
+.userAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--accent);
+  flex-shrink: 0;
+  background: var(--accent-light);
 }

@@ -38,25 +38,59 @@ function Signup() {
   }
 
   return (
-    <>
-      {" "}
-      <form onSubmit={handleSignup} className={styles.form}>
-        <label>username:</label>
-        <input type="text" name="username" onChange={handleChange} />
-        <label>password:</label>
-        <input type="password" name="password" onChange={handleChange} />
-        <label>Confirm password:</label>
-        <input type="password" name="confirmPw" onChange={handleChange} />
-        {formData.confirmPw && formData.password !== formData.confirmPw && (
-          <p style={{ color: "red" }}>Passwords do not match yet...</p>
-        )}
-
-        <label>email:</label>
-        <input type="email" name="email" onChange={handleChange} />
-        <button type="submit">Submit</button>
-        {error ? <div>{error}</div> : ""}
-      </form>
-    </>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h1 className={styles.title}>Create account</h1>
+        <p className={styles.subtitle}>Join to start messaging</p>
+        <form onSubmit={handleSignup} className={styles.form}>
+          <div className={styles.field}>
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="Choose a username"
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Create a password"
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="confirmPw">Confirm password</label>
+            <input
+              id="confirmPw"
+              type="password"
+              name="confirmPw"
+              placeholder="Repeat your password"
+              onChange={handleChange}
+            />
+            {formData.confirmPw && formData.password !== formData.confirmPw && (
+              <p className={styles.pwMismatch}>Passwords do not match yet…</p>
+            )}
+          </div>
+          <button type="submit" className={styles.submitBtn}>Create account</button>
+          {error && <div className={styles.errorMsg}>{error}</div>}
+        </form>
+      </div>
+    </div>
   );
 }
 

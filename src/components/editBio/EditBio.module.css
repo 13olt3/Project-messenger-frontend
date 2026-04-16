@@ -1,13 +1,65 @@
+.editWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-  grid-column: 2/3;
-  grid-row: 2/4;
+  gap: 10px;
 }
+
 .hidden {
-  visibility: collapse;
+  display: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.formActions {
+  display: flex;
+  gap: 8px;
+}
+
+.saveBtn {
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.cancelBtn {
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.cancelBtn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+.editTrigger {
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.editTrigger:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  box-shadow: none;
 }

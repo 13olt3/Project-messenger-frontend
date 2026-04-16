@@ -35,6 +35,7 @@ export const signupUser = async (username, email, password, confirmPw) => {
 export const getUser = async (username) => {
   try {
     const response = await api.get(`/users/${username}`);
+
     return response.data;
   } catch (error) {
     console.log("Error fetching posts:", error);

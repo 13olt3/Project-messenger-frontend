@@ -28,10 +28,10 @@ function App() {
     <>
       <div className={styles.app}>
         <Header user={currentUser} handleLogout={handleLogout} />
-        <div>
+        <div className={styles.main}>
           <Outlet context={contextOutlet} />
         </div>
-        <section className={styles.spacer}>Bottom spacer</section>
+        <footer className={styles.footer}></footer>
       </div>
     </>
   );

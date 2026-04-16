@@ -30,20 +30,39 @@ function Login() {
   }
 
   return (
-    <>
-      {" "}
-      <form onSubmit={handleLogin} className={styles.form}>
-        <label>username:</label>
-        <input type="text" name="username" onChange={handleChange} />
-        <label>password:</label>
-        <input type="password" name="password" onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
-      <div>
-        No account? Sign up:
-        <Link to="/signup">Sign up now.</Link>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h1 className={styles.title}>Welcome back</h1>
+        <p className={styles.subtitle}>Sign in to your account to continue</p>
+        <form onSubmit={handleLogin} className={styles.form}>
+          <div className={styles.field}>
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="Enter your username"
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              onChange={handleChange}
+            />
+          </div>
+          <button type="submit" className={styles.submitBtn}>Sign in</button>
+        </form>
+        <div className={styles.footer}>
+          No account?{" "}
+          <Link to="/signup">Create one now</Link>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

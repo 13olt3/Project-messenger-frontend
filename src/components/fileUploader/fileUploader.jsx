@@ -14,9 +14,7 @@ const FileUploader = () => {
   };
 
   async function handleUpload() {
-    // We will fill this out later
     if (file) {
-      console.log("Uploading file...");
       const formData = new FormData();
       formData.append("profilePic", file);
 
@@ -31,8 +29,9 @@ const FileUploader = () => {
   }
 
   return (
-    <>
-      <div className="input-group">
+    <div className={styles.uploader}>
+      <h2 className={styles.title}>Upload profile picture</h2>
+      <div className={styles.dropzone}>
         <input
           id="file"
           type="file"
@@ -41,22 +40,20 @@ const FileUploader = () => {
         />
       </div>
       {file && (
-        <section>
-          File details:
+        <div className={styles.fileDetails}>
           <ul>
-            <li>Name: {file.name}</li>
-            <li>Type: {file.type}</li>
-            <li>Size: {file.size} bytes</li>
+            <li><strong>Name</strong>{file.name}</li>
+            <li><strong>Type</strong>{file.type}</li>
+            <li><strong>Size</strong>{(file.size / 1024).toFixed(1)} KB</li>
           </ul>
-        </section>
+        </div>
       )}
-
       {file && (
-        <button onClick={handleUpload} className="submit">
-          Upload a file
+        <button onClick={handleUpload} className={styles.uploadBtn}>
+          Upload photo
         </button>
       )}
-    </>
+    </div>
   );
 };
 

@@ -21,30 +21,36 @@ function User() {
 
   if (loading) return <div id="center">Loading page...</div>;
   return (
-    <div>
+    <div className={styles.page}>
       <div className={styles.profileSummary}>
-        <h1 className={styles.username}>{user.username}</h1>
-        <div className={styles.bio}>
-          {user.profile.bio}
-          {username === localStorage.getItem("username") ? <EditBio /> : ""}
-        </div>
         <div className={styles.picCanvas}>
-          {user.profile.profilePic === "default" ? (
-            <img src={defaultUser} className={styles.profilePic}></img>
-          ) : (
-            <img
-              src={user.profile.profilePic}
-              className={styles.profilePic}
-            ></img>
+          <img
+            src={user.profile.profilePic === "default" ? defaultUser : user.profile.profilePic}
+            className={styles.profilePic}
+            alt={user.username}
+          />
+          {username === localStorage.getItem("username") && (
+            <Link to="/user/upload" className={styles.uploadLink}>
+              Change photo
+            </Link>
           )}
-          {username === localStorage.getItem("username") ? (
-            <Link to="/user/upload">Upload new profile picture</Link>
+        </div>
+        <div className={styles.userInfo}>
+          <h1 className={styles.username}>{user.username}</h1>
+          <span className={styles.bioLabel}>Bio</span>
+          {user.profile.bio ? (
+            <p className={styles.bio}>{user.profile.bio}</p>
           ) : (
-            ""
+            <p className={styles.bioEmpty}>No bio yet.</p>
           )}
+          {username === localStorage.getItem("username") && <EditBio />}
         </div>
       </div>
-      <Link to={`/conversation/${user.username}`}>Message user</Link>
+      <div className={styles.actions}>
+        <Link to={`/conversation/${user.username}`} className={styles.messageBtn}>
+          Message {user.username}
+        </Link>
+      </div>
     </div>
   );
 }

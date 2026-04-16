@@ -1,0 +1,72 @@
+.container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  min-height: calc(100svh - 56px);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-lg);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.pwMismatch {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: -8px;
+  padding: 6px 10px;
+  background: var(--error-light);
+  border-radius: var(--radius-sm);
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 11px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 4px;
+  border-radius: var(--radius-md);
+}
+
+.errorMsg {
+  font-size: 13px;
+  color: var(--error);
+  text-align: center;
+  padding: 8px 12px;
+  background: var(--error-light);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}

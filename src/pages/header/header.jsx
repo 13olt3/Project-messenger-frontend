@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import { getUser } from "../../services/userService.js";
+import defaultUser from "../../assets/defaultUser.jpg";
 
 import styles from "./Header.module.css";
 
 function Header({ user, handleLogout }) {
   const currentUser = localStorage.getItem("username");
+  const [userData, setUserData] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const links = [
     { name: "Signup", link: "/signup" },
     { name: "Login", link: "/login" },
@@ -13,6 +18,20 @@ function Header({ user, handleLogout }) {
     { name: "Messages", link: "/messages" },
     { name: "All users", link: "/allusers" },
   ];
+
+  useEffect(() => {
+    async function getUsersData() {
+      const data = await getUser(currentUser);
+
+      setUserData(data);
+      setLoading(false);
+    }
+    getUsersData();
+  }, []);
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div className={styles.header}>
@@ -40,16 +59,39 @@ function Header({ user, handleLogout }) {
         )}
       </div>
       <div className={styles.right}>
-        <Link
-          key={"profile"}
-          to={`/user/${currentUser}`}
-          className={styles.profileLink}
-        >
-          Profile
-        </Link>
+        {currentUser && (
+          <Link
+            key={"profile"}
+            to={`/user/${currentUser}`}
+            className={styles.profileLink}
+          >
+            <img
+              src={
+                userData?.profile?.profilePic === "default"
+                  ? defaultUser
+                  : userData?.profile?.profilePic
+              }
+              className={styles.userAvatar}
+              alt={userData?.username}
+            />
+            Profile
+          </Link>
+        )}
       </div>
     </div>
   );
 }
 
 export default Header;
+
+// {
+//   <img
+//     src={
+//       userData.profile.profilePic === "default"
+//         ? defaultUser
+//         : userData.profile.profilePic
+//     }
+//     className={styles.profilePic}
+//     alt={userData.username}
+//   />;
+// }
