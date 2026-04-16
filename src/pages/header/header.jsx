@@ -20,13 +20,20 @@ function Header({ user, handleLogout }) {
   ];
 
   useEffect(() => {
-    async function getUsersData() {
-      const data = await getUser(currentUser);
+    if (currentUser) {
+      async function getUsersData() {
+        const data = await getUser(currentUser);
 
-      setUserData(data);
-      setLoading(false);
+        setUserData(data);
+        setLoading(false);
+      }
+      getUsersData();
+    } else {
+      async function loading() {
+        setLoading(false);
+      }
+      loading();
     }
-    getUsersData();
   }, [currentUser]);
 
   if (loading) {
