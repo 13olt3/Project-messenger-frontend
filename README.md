@@ -27,3 +27,5 @@ The project follows the **MVC (Model-View-Controller)** design pattern to ensure
 
 This project was about connecting all the peices together. Making sure that the http requests all went to the appropriate place and worked seamlessly.
 This project also employed Claude Code to do basic styling.
+Access here: https://transcendent-babka-611215.netlify.app/
+Once you attempt login or signup, please allow 30-40 seconds for the backend database start up before it logs you in.
